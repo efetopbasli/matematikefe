@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    
+    <meta charset="UTF-8">
+    <title>efetopbasli</title>
+    <style>
+
+        /* Görseli tam ekran olarak ayarlayın ve arka plana sığdırın */
+        @keyframes fadeInEffect {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Animasyonu fullscreen-bg__video class'ına uygulayın */
+.fullscreen-bg__video {
+    animation-name: fadeInEffect;
+    animation-duration: 2s; /* Animasyonun süresi 2 saniye */
+    animation-fill-mode: forwards; /* Animasyonun bitiş durumunu koruyun */
+}
+        
+        .fullscreen-bg__video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: url('Mathematics Education Video In Simple animated Colorful Style  (1).png') no-repeat center center;
+            background-size: cover; /* Görseli orantılı olarak sığdır */
+        }
+    </style>
+</head>
+<body>
+
+<div class="fullscreen-bg">
+    <div class="fullscreen-bg__video"></div>
+</div>
+
+<script>
+    // Kullanıcı 'Enter' tuşuna bastığında çalışacak fonksiyon
+    document.addEventListener('keydown', function(event) {
+        if(event.key === "Enter") {
+            window.location.href = 'anasayfa.html'; // Kullanıcıyı 'anasayfa.html' sayfasına yönlendir
+        }
+    });
+</script>
+
+</body>
+</html>

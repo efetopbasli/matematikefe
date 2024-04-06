@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matematik Testi</title>
+<style>
+/* Mevcut CSS kodlarınızın sonuna ekleyin */
+@keyframes fadeInEffect {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Animasyonu fullscreen-bg__video class'ına uygulayın */
+.question-container{
+    animation-name: fadeInEffect;
+    animation-duration: 2s; /* Animasyonun süresi 2 saniye */
+    animation-fill-mode: forwards; /* Animasyonun bitiş durumunu koruyun */
+}
+
+
+  body, html {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('3a.png') no-repeat center center;
+    background-size: cover;
+    animation-name: fadeInEffect;
+    animation-duration: 1s; /* Animasyonun süresi 2 saniye */
+    animation-fill-mode: forwards; /* Animasyonun bitiş durumunu koruyun */
+
+  }
+
+  .bg {
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f000; /* Arka plan rengi */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .question-container {
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 600px;
+  }
+
+  .option {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 20px;
+    background-color: #ddd;
+    cursor: pointer;
+  }
+
+  .option:hover {
+    background-color: rgb(166, 143, 204);
+  }
+
+  .correct {
+    background-color: #4CAF50; /* Yeşil */
+  }
+
+  .wrong {
+    background-color: #f44336; /* Kırmızı */
+  }
+</style>
+</head>
+<body>
+
+<div class="bg">
+  <div class="question-container" id="questionContainer">
+    <!-- Sorular burada gösterilecek -->
+  </div>
+</div>
+
+<script>
+  const questions = [
+  {
+    question: "Bir kutuda 4 mavi, 3 kırmızı ve 2 yeşil top vardır. Rastgele seçilen 3 topun hepsinin aynı renk olma olasılığı nedir?",
+    options: ["1/42", "1/28", "1/14", "1/21", "1/56"],
+    answer: "1/28"
+  },
+  {
+    question: "Bir yarışmada yarışmacılara 4 farklı soru sorulacak. Her sorunun 4 farklı cevabı var ve sadece biri doğru. Bir yarışmacının tüm soruları rastgele cevaplandırarak hepsini doğru cevaplaması olasılığı nedir?",
+    options: ["1/64", "1/128", "1/256", "1/16", "1/1024"],
+    answer: "1/256"
+  },
+  {
+    question: "Bir sınıfta 15 kız ve 10 erkek öğrenci vardır. Sınıf başkanı ve yardımcısının rastgele seçilmesi durumunda her ikisinin de kız öğrenci olma olasılığı nedir?",
+    options: ["7/48", "21/115", "14/24", "3/5", "1/2"],
+    answer: "21/115"
+  },
+  {
+    question: "Bir torbada 5 beyaz, 4 siyah ve 3 kırmızı bilye vardır. Torbadan ardışık olarak ve geri koymadan 3 bilye çekildiğinde, çekilen bilyelerin tamamının farklı renklerde olma olasılığı nedir?",
+    options: ["1/11", "2/7", "6/11", "3/22", "5/22"],
+    answer: "6/11"
+  },
+  {
+    question: "Bir zar iki kez atılıyor. İlk atışta çift sayı, ikinci atışta tek sayı gelme olasılığı nedir?",
+    options: ["1/4", "1/2", "3/8", "1/3", "1/8"],
+    answer: "3/8"
+  },
+  {
+    question: "Bir çanta içinde 6 turuncu, 3 mavi ve 2 yeşil kalemden oluşan kalemler bulunmaktadır. Rastgele seçilen iki kalemin her ikisinin de turuncu olma olasılığı nedir?",
+    options: ["5/33", "3/11", "15/55", "1/3", "2/5"],
+    answer: "5/33"
+  },
+  {
+    question: "60 soruluk bir sınavda her doğru yanıt için 4 puan, her yanlış yanıt için ise 1 puan kaybı vardır. Bir öğrencinin rastgele işaretlediği sorular sonucunda 0 puan alması beklenen doğru yanıt sayısı nedir?",
+    options: ["12", "15", "20", "24", "30"],
+    answer: "15"
+  },
+  {
+    question: "Bir kutuda 2 altın, 3 gümüş ve 4 bronz madalya vardır. Rastgele seçilen iki madalyanın farklı türde olma olasılığı nedir?",
+    options: ["1/2", "5/9", "3/4", "2/3", "7/9"],
+    answer: "2/3"
+  },
+  {
+    question: "Bir şehirdeki trafik ışıklarının yeşil, sarı veya kırmızı olma olasılıkları sırasıyla 1/2, 1/4 ve 1/4'tür. Rastgele seçilen bir trafik ışığının ya yeşil ya da sarı olma olasılığı nedir?",
+    options: ["1/4", "1/2", "3/4", "1/8", "2/3"],
+    answer: "3/4"
+  },
+  {
+    "question": "Bir zar üç kez atılıyor. En az bir kez 6 gelme olasılığı nedir?",
+    "options": ["91/216", "125/216", "5/6", "1/6", "2/3"],
+    "answer": "91/216"
+  }
+];
+
+
+  let currentQuestionIndex = 0;
+  let correctAnswersCount = 0;
+
+  function showQuestion(questionIndex) {
+    const questionObj = questions[questionIndex];
+    const questionContainer = document.getElementById('questionContainer');
+    questionContainer.innerHTML = `<p>${questionObj.question}</p>` +
+      questionObj.options.map((option) => 
+        `<div class="option" onclick="selectOption('${option}', this)">${option}</div>`
+      ).join('');
+  }
+
+  function selectOption(selectedOption, element) {
+    const questionObj = questions[currentQuestionIndex];
+    document.querySelectorAll('.option').forEach(option => option.onclick = null); // Disable further clicks
+    if (selectedOption === questionObj.answer) {
+      element.classList.add('correct');
+      correctAnswersCount++;
+    } else {
+      element.classList.add('wrong');
+    }
+    setTimeout(() => {
+  if (currentQuestionIndex < questions.length - 1) {
+    currentQuestionIndex++;
+    showQuestion(currentQuestionIndex);
+  } else {
+    let resultImage = correctAnswersCount > 10 ? 'ahmethocaseviyesi.png' : '2a.png'; // Doğru cevap sayısına göre görsel seçimi
+    document.getElementById('questionContainer').innerHTML = `
+      <p>Test bitti! Doğru cevap sayınız: ${correctAnswersCount} / ${questions.length}</p>
+      <img src="${resultImage}" alt="Sonuç Görseli" style="max-width:100%;height:auto;">`; // Görseli göster
+  }
+}, 1000); // 1 second to next question
+
+  }
+
+  showQuestion(currentQuestionIndex);
+</script>
+
+</body>
+</html>

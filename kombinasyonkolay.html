@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matematik Testi</title>
+<style>
+    @keyframes fadeInEffect {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+  body, html {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('4a.png') no-repeat center center;
+    background-size: cover;
+    animation-name: fadeInEffect;
+    animation-duration: 1s; /* Animasyonun süresi 2 saniye */
+    animation-fill-mode: forwards; /* Animasyonun bitiş durumunu koruyun */
+
+  }
+
+  .bg {
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f000; /* Arka plan rengi */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .question-container {
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 600px;
+    animation-name: fadeInEffect;
+    animation-duration: 2s; /* Animasyonun süresi 2 saniye */
+    animation-fill-mode: forwards; /* Animasyonun bitiş durumunu koruyun */
+  }
+
+  .option {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 20px;
+    background-color: #ddd;
+    cursor: pointer;
+  }
+
+  .option:hover {
+    background-color: rgb(202, 126, 139);
+  }
+
+  .correct {
+    background-color: #4CAF50; /* Yeşil */
+  }
+
+  .wrong {
+    background-color: #f44336; /* Kırmızı */
+  }
+</style>
+</head>
+<body>
+
+<div class="bg">
+  <div class="question-container" id="questionContainer">
+    <!-- Sorular burada gösterilecek -->
+  </div>
+</div>
+
+<script>
+  const questions = [
+  {
+    question: 'Bir sınıfta 10 öğrenci vardır. Bu öğrencilerden 2\'si proje için rastgele seçilecektir. Kaç farklı şekilde 2 öğrenci seçilebilir?',
+    options: ['A) 20', 'B) 45', 'C) 90', 'D) 100', 'E) 120'],
+    answer: 'B) 45'
+  },
+  {
+    question: '5 farklı kitabı bir rafa kaç farklı sırayla dizilebilir?',
+    options: ['A) 25', 'B) 50', 'C) 100', 'D) 120', 'E) 150'],
+    answer: 'D) 120'
+  },
+  {
+    question: 'Bir torbada 4 mavi, 3 kırmızı ve 2 yeşil top vardır. Bu toplardan rastgele seçilen 2 topun farklı renkte olma olasılığı nedir?',
+    options: ['A) 12/21', 'B) 14/21', 'C) 16/21', 'D) 18/21', 'E) 20/21'],
+    answer: 'B) 14/21'
+  },
+  {
+    question: '8 kişilik bir grubun 3 farklı komiteye kaç farklı şekilde dağıtılabileceği, her komitenin en az bir kişi olacak şekilde?',
+    options: ['A) 510', 'B) 1023', 'C) 2046', 'D) 4095', 'E) 8190'],
+    answer: 'D) 4095'
+  },
+  {
+    question: '6 farklı şehirden 3\'ünü ziyaret etmek isteyen bir turist, bu şehirleri kaç farklı sırayla ziyaret edebilir?',
+    options: ['A) 60', 'B) 120', 'C) 180', 'D) 240', 'E) 360'],
+    answer: 'B) 120'
+  },
+  {
+    question: '4 kadın ve 4 erkekten oluşan bir grup, bir sıraya kaç farklı şekilde dizilebilir ki kadınlar ve erkekler yan yana dursun?',
+    options: ['A) 1152', 'B) 2880', 'C) 5760', 'D) 14400', 'E) 17280'],
+    answer: 'B) 2880'
+  },
+  {
+    question: 'Bir zarın üst üste 4 kez atılmasıyla oluşan sayı dizilimlerinin kaçında en az bir kez 6 gelir?',
+    options: ['A) 671', 'B) 1296', 'C) 1555', 'D) 1621', 'E) 1750'],
+    answer: 'C) 1555'
+  },
+  {
+    question: '7 farklı kitap arasından herhangi 3\'ünün seçilip bir rafa sıralanması kaç farklı şekilde yapılabilir?',
+    options: ['A) 210', 'B) 420', 'C) 630', 'D) 840', 'E) 1050'],
+    answer: 'A) 210'
+  },
+  {
+    question: 'Bir pizza 8 eşit parçaya bölünmüştür. Bu parçalardan 3\'ünün peş peşe olacak şekilde seçilme sayısı kaçtır?',
+    options: ['A) 8', 'B) 16', 'C) 24', 'D) 32', 'E) 40'],
+    answer: 'A) 8'
+  },
+  {
+    question: '4\'ü mavi, 3\'ü kırmızı ve 5\'i yeşil olmak üzere toplam 12 kalemden rastgele seçilen 2 kalemin aynı renk olma olasılığı nedir?',
+    options: ['A) 5/33', 'B) 10/33', 'C) 15/33', 'D) 20/33', 'E) 25/33'],
+    answer: 'C) 15/33'
+  },
+  {
+    question: '3 kadın ve 3 erkek, bir daire etrafında kaç farklı şekilde oturabilir ki hiçbir kadın yan yana oturmasın?',
+    options: ['A) 36', 'B) 72', 'C) 144', 'D) 240', 'E) 360'],
+    answer: 'C) 144'
+  },
+  {
+    question: 'Bir futbol takımı, 11 oyuncusunu sahaya kaç farklı şekilde çıkarabilir, eğer takım kaptanı ve kaleci her zaman belirli pozisyonlarda oynarsa?',
+    options: ['A) 9!', 'B) 10!', 'C) 11!', 'D) 362.880', 'E) 39.916.800'],
+    answer: 'A) 9!'
+  },
+  {
+    question: 'Bir sayının 2 ile bölümünden kalan 1 ise, bu sayı 1 ile 100 arasında kaç farklı değer alabilir?',
+    options: ['A) 49', 'B) 50', 'C) 99', 'D) 100', 'E) 51'],
+    answer: 'B) 50'
+  },
+  {
+    question: '5 erkek ve 5 kadından oluşan bir grup, kaç farklı şekilde bir sıraya dizilebilir ki hiçbir kadın yan yana gelmesin?',
+    options: ['A) 2880', 'B) 14400', 'C) 30240', 'D) 86400', 'E) 120960'],
+    answer: 'A) 2880'
+  },
+  {
+    question: 'Bir kitapçıda bulunan 10 farklı roman, 8 farklı bilim kitabı ve 7 farklı tarih kitabı arasından rastgele seçilen 3 kitabın en az birinin roman olma olasılığı nedir?',
+    options: ['A) 120/300', 'B) 210/300', 'C) 240/300', 'D) 270/300', 'E) 290/300'],
+    answer: 'D) 270/300'
+  }
+];
+
+  let currentQuestionIndex = 0;
+  let correctAnswersCount = 0;
+
+  function showQuestion(questionIndex) {
+    const questionObj = questions[questionIndex];
+    const questionContainer = document.getElementById('questionContainer');
+    questionContainer.innerHTML = `<p>${questionObj.question}</p>` +
+      questionObj.options.map((option) => 
+        `<div class="option" onclick="selectOption('${option}', this)">${option}</div>`
+      ).join('');
+  }
+
+  function selectOption(selectedOption, element) {
+    const questionObj = questions[currentQuestionIndex];
+    document.querySelectorAll('.option').forEach(option => option.onclick = null); // Disable further clicks
+    if (selectedOption === questionObj.answer) {
+      element.classList.add('correct');
+      correctAnswersCount++;
+    } else {
+      element.classList.add('wrong');
+    }
+    setTimeout(() => {
+  if (currentQuestionIndex < questions.length - 1) {
+    currentQuestionIndex++;
+    showQuestion(currentQuestionIndex);
+  } else {
+    let resultImage = correctAnswersCount > 10 ? 'ahmethocaseviyesi.png' : '2a.png'; // Doğru cevap sayısına göre görsel seçimi
+    document.getElementById('questionContainer').innerHTML = `
+      <p>Test bitti! Doğru cevap sayınız: ${correctAnswersCount} / ${questions.length}</p>
+      <img src="${resultImage}" alt="Sonuç Görseli" style="max-width:100%;height:auto;">`; // Görseli göster
+  }
+}, 1000); // 1 second to next question
+
+  }
+
+  showQuestion(currentQuestionIndex);
+</script>
+
+</body>
+</html>
